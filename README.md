@@ -9,11 +9,13 @@ This repository contains the llvm opt pass for this instrumentation. This reposi
 The following instructions are for Ubuntu 22.04.
 
 **Packages from `apt`**
+
 ```
 sudo apt install -y python3.10 multilog bear patchelf
 ```
 
 **llvm**
+
 ```
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
@@ -21,6 +23,7 @@ sudo ./llvm.sh 13 all
 ```
 
 **Cargo packages**
+
 ```
 # install rust (and cargo) using rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -30,9 +33,11 @@ cargo install fd sd
 ```
 
 **Others**
-Install [libbacktrace](https://github.com/ianlancetaylor/libbacktrace) as per the instructions in their repository.
 
-**Python Packages (pip)***
+- Install [libbacktrace](https://github.com/ianlancetaylor/libbacktrace) as per the instructions in their repository.
+
+**Python Packages (pip)**
+
 ```
 pip install colorlog wllvm
 ```
