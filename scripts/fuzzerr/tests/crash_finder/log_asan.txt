@@ -1,0 +1,53 @@
+=================================================================
+==11706==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000014 at pc 0x0000004372ad bp 0x7fffffffdcd0 sp 0x7fffffffd480
+READ of size 256 at 0x602000000014 thread T0
+    #0 0x4372ac in __interceptor_memcpy.part.0 /home/r3x/griller/llvm10/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:811:5
+    #1 0x4f2700 in level2 /home/r3x/griller/griller/tests/demo/ctfchall.c:75:19
+    #2 0x4f2b3a in driverwrapper (/grill-cli/ctfchall_c8y3r4nt/aflbin+0x4f2b3a)
+    #3 0x4f2b91 in basedriverfunc /home/r3x/griller/griller/instrumentation_helpers/helper.c:264:5
+    #4 0x4f29e0 in main /home/r3x/griller/griller/tests/demo/ctfchall.c:110:5
+    #5 0x7ffff7c400b2 in __libc_start_main /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #6 0x41b35d in _start (/grill-cli/ctfchall_c8y3r4nt/aflbin+0x41b35d)
+
+0x602000000014 is located 0 bytes to the right of 4-byte region [0x602000000010,0x602000000014)
+allocated by thread T0 here:
+    #0 0x4bd32f in malloc /home/r3x/griller/llvm10/compiler-rt/lib/asan/asan_malloc_linux.cpp:145:3
+    #1 0x4f2e4c in createMemObj /home/r3x/griller/griller/instrumentation_helpers/helper.c:278:10
+    #2 0x4f301d in createPtrToInt32 /home/r3x/griller/griller/instrumentation_helpers/helper.c:370:18
+    #3 0x4f2b17 in driverwrapper (/grill-cli/ctfchall_c8y3r4nt/aflbin+0x4f2b17)
+    #4 0x4f29e0 in main /home/r3x/griller/griller/tests/demo/ctfchall.c:110:5
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/r3x/griller/llvm10/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:811:5 in __interceptor_memcpy.part.0
+Shadow bytes around the buggy address:
+  0x0c047fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c047fff8000: fa fa[04]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==11706==ABORTING

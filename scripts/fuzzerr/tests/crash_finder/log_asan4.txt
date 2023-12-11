@@ -1,0 +1,62 @@
+    #4 0x7fafb8e3e12b in ZSTD_XXH64_update /home/shank/code/research/detecterr_input/zstd-1.5.2/zstd-1.5.2/lib/.//common/xxhash.h:2590:56
+    #5 0x7fafb8fa24d1 in ZSTD_decompressFrame /home/shank/code/research/detecterr_input/zstd-1.5.2/zstd-1.5.2/lib/.//decompress/zstd_decompress.c:933:13
+    #6 0x7fafb8fa1beb in ZSTD_decompressMultiFrame /home/shank/code/research/detecterr_input/zstd-1.5.2/zstd-1.5.2/lib/.//decompress/zstd_decompress.c:1028:32
+    #7 0x7fafb8fbe6cc in ZSTD_decompress_usingDDict /home/shank/code/research/detecterr_input/zstd-1.5.2/zstd-1.5.2/lib/.//decompress/zstd_decompress.c:1543:12
+    #8 0x7fafb8fc1224 in ZSTD_decompressStream /home/shank/code/research/detecterr_input/zstd-1.5.2/zstd-1.5.2/lib/.//decompress/zstd_decompress.c:2029:53
+    #9 0x7fafb95dc4d4  (/usr/lib/libcurl.so.4+0x104d4)
+    #10 0x7fafb962e92d  (/usr/lib/libcurl.so.4+0x6292d)
+    #11 0x7fafb9613136  (/usr/lib/libcurl.so.4+0x47136)
+    #12 0x7fafb96164cd in curl_multi_perform (/usr/lib/libcurl.so.4+0x4a4cd)
+    #13 0x7fafb95ed513 in curl_easy_perform (/usr/lib/libcurl.so.4+0x21513)
+    #14 0x51e1f5 in serial_transfers /home/shank/code/research/FuzzERR/experiments/libzstd/curl_src/build/src/../../src/tool_operate.c:2391:16
+    #15 0x51beea in run_all_transfers /home/shank/code/research/FuzzERR/experiments/libzstd/curl_src/build/src/../../src/tool_operate.c:2579:16
+    #16 0x51b997 in operate /home/shank/code/research/FuzzERR/experiments/libzstd/curl_src/build/src/../../src/tool_operate.c:2695:18
+    #17 0x518c5a in main /home/shank/code/research/FuzzERR/experiments/libzstd/curl_src/build/src/../../src/tool_main.c:276:14
+    #18 0x7fafb8c682cf  (/usr/lib/libc.so.6+0x232cf)
+    #19 0x7fafb8c68389 in __libc_start_main (/usr/lib/libc.so.6+0x23389)
+    #20 0x422824 in _start /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:115
+
+0x6290000781ec is located 3748 bytes to the right of 16712-byte region [0x629000073200,0x629000077348)
+freed by thread T0 here:
+    #0 0x49f4a2 in __interceptor_free /home/shank/code/applications/llvm-project-13.0.1/compiler-rt/lib/asan/asan_malloc_linux.cpp:111:3
+    #1 0x7fafb94dd269  (/usr/lib/libssl.so.1.1+0x25269)
+
+previously allocated by thread T0 here:
+    #0 0x49f70d in malloc /home/shank/code/applications/llvm-project-13.0.1/compiler-rt/lib/asan/asan_malloc_linux.cpp:129:3
+    #1 0x7fafb94d849b  (/usr/lib/libssl.so.1.1+0x2049b)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/shank/code/applications/llvm-project-13.0.1/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:827:5 in __interceptor_memcpy
+Shadow bytes around the buggy address:
+  0x0c5280006fe0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5280006ff0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5280007000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5280007010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5280007020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c5280007030: fa fa fa fa fa fa fa fa fa fa fa fa fa[fa]fa fa
+  0x0c5280007040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5280007050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5280007060: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5280007070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5280007080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2838749==ABORTING
+
+

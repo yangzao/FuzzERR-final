@@ -1,0 +1,23 @@
+{
+  "SETUP_CMDS": [
+    "mkdir -p /tmp/afl-ramdisk/jpegoptim/tmpdir/outdir"
+  ],
+  "LIB_INSTR_DIR": "/home/shank/code/research/FuzzERR/experiments/libjpeg",
+  "LIB_SRC_DIR": "/home/shank/code/research/detecterr_input/libjpeg-turbo_2.1.2.orig/libjpeg-turbo-2.1.2",
+  "BIN_SRC_DIR": "/home/shank/code/research/fuzzerr_program_sources/jpegoptim_src",
+  "BIN_TO_FUZZ": "/home/shank/code/research/FuzzERR/experiments/libjpeg/jpegoptim_install/bin/jpegoptim",
+  "BIN_INPUT_DIR": "/home/shank/code/research/FuzzERR/experiments/libjpeg/jpeg_input",
+  "BIN_ARGS_LIST": [
+    "-d {{outputd}} -o {{input}}",
+    "-d {{outputd}} -o --threshold=20 {{input}}",
+    "-d {{outputd}} -o --strip-all {{input}}",
+    "-d {{outputd}} -o --all-progressive {{input}}",
+    "-d {{outputd}} -o --size=250k {{input}}"
+  ],
+  "DEBUG": 1,
+  "TOTAL_FUZZ_TIME_MINS": 360,
+  "FUZZ_TIME_PER_INPUT_ARG_MINS": 15,
+  "AFL_TIMEOUT_MSECS": 2000,
+  "FUZZERR_TIMEOUT_IN_SEC": 1,
+  "LOG_DESTINATION": "MULTILOG"
+}

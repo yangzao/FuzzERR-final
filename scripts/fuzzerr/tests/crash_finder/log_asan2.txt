@@ -1,0 +1,23 @@
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1841520==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f8beaff447e bp 0x7fff31406100 sp 0x7fff314060a0 T0)
+==1841520==The signal is caused by a READ memory access.
+==1841520==Hint: address points to the zero page.
+    #0 0x7f8beaff447e in tparm_setup /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tinfo/lib_tparm.c:621:11
+    #1 0x7f8beafecf1e in _nc_tiparm /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tinfo/lib_tparm.c:1198:9
+    #2 0x7f8beb019cb8 in _nc_mvcur_init_sp /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tty/lib_mvcur.c:403:26
+    #3 0x7f8beb0196c2 in _nc_mvcur_init /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tty/lib_mvcur.c:465:5
+    #4 0x7f8beb0169cf in newterm_sp /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/base/lib_newterm.c:343:6
+    #5 0x7f8beb016209 in newterm /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/base/lib_newterm.c:367:10
+    #6 0x7f8beb016111 in initscr /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/base/lib_initscr.c:93:6
+    #7 0x4fc361 in CRT_init /home/shank/code/research/FuzzERR/experiments/libncurses/htop_src/CRT.c:920:4
+    #8 0x4f0e10 in CommandLine_run /home/shank/code/research/FuzzERR/experiments/libncurses/htop_src/CommandLine.c:347:4
+    #9 0x4d87ac in main /home/shank/code/research/FuzzERR/experiments/libncurses/htop_src/htop.c:15:11
+    #10 0x7f8beacd12cf  (/usr/lib/libc.so.6+0x232cf)
+    #11 0x7f8beacd1389 in __libc_start_main (/usr/lib/libc.so.6+0x23389)
+    #12 0x429ab4 in _start /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:115
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tinfo/lib_tparm.c:621:11 in tparm_setup
+==1841520==ABORTING
+

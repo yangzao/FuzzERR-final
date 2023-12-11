@@ -1,0 +1,97 @@
+initialized valid mask count...
+VALID_MASK_COUNT:357
+INPUT_NUM_COUNT:12
+
+ Testing libpng version 1.6.35
+   with zlib   version 1.2.12
+
+libpng version 1.6.35 - July 15, 2018
+Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson
+Copyright (c) 1996-1997 Andreas Dilger
+Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
+ library (10635): libpng version 1.6.35 - July 15, 2018
+
+ pngtest (10635): libpng version 1.6.35 - July 15, 2018
+
+ Testing pngtest.png:Could not find input file pngtest.png
+
+ Testing pngtest.png: FAIL
+
+ Testing pngtest.png:Could not find input file pngtest.png
+
+ Testing pngtest.png: FAIL
+
+ Testing pngtest.png:Could not find input file pngtest.png
+ FAIL
+ libpng FAILS test
+initializing error mask...
+initializing error masks randomly...
+initialized error masks randomly.
+ERROR_MASK(s):
+01101010,01101011,00110111,00011100
+00100111,11011101,01011110,11100001
+01000011,11011101,10110000,00011110
+00010101,10010101,10111101,10010101
+01100110,11100001,00110010,10010000
+00000111,01011011,11010100,00001101
+01100110,10111100,10111111,00010110
+01111010,11010101,11010110,11001001
+00101100,01011101,01111011,10101000
+01111111,11100011,01110110,10100010
+01000000,10101101,10100000,01010001
+01010000,00000011,11001001,01100110
+> backtrace() returned 9 addresses
+BACKTRACE START >>
+>>>> png_create_png_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/png.c:317
+>>>> png_create_read_struct_2 at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:45
+>>>> png_create_read_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:33
+>>>> main at /home/shank/code/research/tmp/libpng-1.6.35/pngtest.c:2124
+>>>> /usr/lib/libc.so.6(+0x232d0) [0x7faff22132d0]
+>>>> /usr/lib/libc.so.6(__libc_start_main+0x8a) [0x7faff221338a]
+>>>> _start at /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+get_bit(): returning 1 for current_idx 2 (effective idx 2), mask_id 7, having hid 4 (png_create_read_struct)
+> backtrace() returned 10 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> png_malloc_warn at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngmem.c:215
+>>>> png_create_png_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/png.c:319
+>>>> png_create_read_struct_2 at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:45
+>>>> png_create_read_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:33
+>>>> main at /home/shank/code/research/tmp/libpng-1.6.35/pngtest.c:2124
+>>>> /usr/lib/libc.so.6(+0x232d0) [0x7faff22132d0]
+>>>> /usr/lib/libc.so.6(__libc_start_main+0x8a) [0x7faff221338a]
+>>>> _start at /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+get_bit(): returning 1 for current_idx 3 (effective idx 3), mask_id 79, having hid 4 (png_create_read_struct)
+> backtrace() returned 11 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> png_malloc_base at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngmem.c:83
+>>>> png_malloc_warn at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngmem.c:217
+>>>> png_create_png_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/png.c:319
+>>>> png_create_read_struct_2 at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:45
+>>>> png_create_read_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:33
+>>>> main at /home/shank/code/research/tmp/libpng-1.6.35/pngtest.c:2124
+>>>> /usr/lib/libc.so.6(+0x232d0) [0x7faff22132d0]
+>>>> /usr/lib/libc.so.6(__libc_start_main+0x8a) [0x7faff221338a]
+>>>> _start at /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+get_bit(): returning 1 for current_idx 4 (effective idx 4), mask_id 73, having hid 4 (png_create_read_struct)
+libpng warning: Out of memory
+ Default limits:
+  width_max  = 0
+  height_max = 0
+  cache_max  = unlimited
+  malloc_max = unlimited
+> backtrace() returned 7 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> png_destroy_read_struct at /home/shank/code/research/detecterr_input/libpng_v1.6.35/libpng-1.6.35/pngread.c:1015
+>>>> main at /home/shank/code/research/tmp/libpng-1.6.35/pngtest.c:2142
+>>>> main at /home/shank/code/research/tmp/libpng-1.6.35/pngtest.c:2000
+>>>> /usr/lib/libc.so.6(+0x232d0) [0x7faff22132d0]
+>>>> /usr/lib/libc.so.6(__libc_start_main+0x8a) [0x7faff221338a]
+>>>> _start at /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+get_bit(): returning 1 for current_idx 8 (effective idx 8), mask_id 116, having hid 7 (png_destroy_read_struct)

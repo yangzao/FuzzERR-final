@@ -1,0 +1,131 @@
+initialized valid mask count...
+VALID_MASK_COUNT:952
+INPUT_NUM_COUNT:30
+initializing error mask...
+initializing error masks randomly...
+initialized error masks randomly.
+ERROR_MASK(s):
+00110000,10000000,00011001,11011100
+00001000,01010011,11110110,01100111
+01110101,00100100,11010101,10000100
+01100011,01010011,00000100,00111011
+01010111,01011110,00101100,10001010
+01011011,00100011,01101110,10001001
+00100000,01111001,01100101,10110101
+01100001,01010000,00100001,11100011
+01010110,11001010,00001000,01010010
+00101100,11011011,10010101,11111100
+01100010,00011100,00111001,00111101
+00101010,10001001,01001101,11101010
+00011010,10010101,10101010,11101010
+00011000,10100000,11011101,01000100
+00100100,01001100,11001101,00100001
+01011001,00000010,11010101,10110001
+01011010,01110011,11100001,11010111
+00100001,01000011,00011000,11110000
+00110001,10101011,01100010,11001101
+00001100,11100011,10011100,10100111
+00001100,11100110,10110011,00000111
+00100110,01011000,01000110,10110101
+00111110,00001000,10111001,11101111
+01001000,11110001,00100101,11010011
+00000011,00011110,11101010,00111001
+00011101,11111010,01011000,00100100
+00100101,00000111,10110110,10110110
+01110000,10010011,00101010,01000101
+00110100,01001111,00010000,11000101
+01110111,11010100,11010000,01011000
+get_bit(): returning 0 for current_idx 0 (effective idx 0), mask_id 398, having hid 4
+get_bit(): returning 0 for current_idx 1 (effective idx 1), mask_id 399, having hid 4
+get_bit(): returning 1 for current_idx 2 (effective idx 2), mask_id 402, having hid 4
+>>>> fuzzerr_disable(): disabling fuzzerr...
+> backtrace() returned 9 addresses
+BACKTRACE START >>
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:359
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/lite_malloc.c:115
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:6
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:14
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:95
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:86
+>>>> /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+>>>> fuzzerr_enable(): enabling fuzzerr...
+get_bit(): returning 1 for current_idx 3 (effective idx 3), mask_id 404, having hid 2
+>>>> fuzzerr_disable(): disabling fuzzerr...
+> backtrace() returned 10 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:289
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:369
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/lite_malloc.c:115
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:5
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:14
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:95
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:86
+>>>> /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+>>>> fuzzerr_enable(): enabling fuzzerr...
+get_bit(): returning 1 for current_idx 4 (effective idx 4), mask_id 392, having hid 4
+>>>> fuzzerr_disable(): disabling fuzzerr...
+> backtrace() returned 12 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:55
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:179
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:291
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:369
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/lite_malloc.c:115
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:5
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:14
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:95
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:86
+>>>> /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+>>>> fuzzerr_enable(): enabling fuzzerr...
+get_bit(): returning 0 for current_idx 5 (effective idx 5), mask_id 393, having hid 4
+get_bit(): returning 1 for current_idx 6 (effective idx 6), mask_id 406, having hid 4
+>>>> fuzzerr_disable(): disabling fuzzerr...
+> backtrace() returned 11 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:180
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:291
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:369
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/lite_malloc.c:115
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:5
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:14
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:95
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:86
+>>>> /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+>>>> fuzzerr_enable(): enabling fuzzerr...
+get_bit(): returning 1 for current_idx 7 (effective idx 7), mask_id 405, having hid 2
+>>>> fuzzerr_disable(): disabling fuzzerr...
+> backtrace() returned 10 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:292
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:369
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/lite_malloc.c:115
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:5
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:14
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:95
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:86
+>>>> /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+>>>> fuzzerr_enable(): enabling fuzzerr...
+get_bit(): returning 1 for current_idx 8 (effective idx 8), mask_id 403, having hid 4
+>>>> fuzzerr_disable(): disabling fuzzerr...
+> backtrace() returned 9 addresses
+- clearing previous backtrace_lines...done
+BACKTRACE START >>
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/mallocng/malloc.c:370
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/malloc/lite_malloc.c:115
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:5
+>>>> /home/shank/code/research/FuzzERR/experiments/libcmusl/test/hello_malloc.c:14
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:95
+>>>> /home/shank/code/research/detecterr_input/musl-1.2.3/musl-1.2.3/src/env/__libc_start_main.c:86
+>>>> /build/glibc/src/glibc/csu/../sysdeps/x86_64/start.S:117
+BACKTRACE END >>
+>>>> fuzzerr_enable(): enabling fuzzerr...
+fish: Job 1, 'FUZZERR_DEBUG=1 FUZZERR_ENABLE_…' terminated by signal SIGSEGV (Address boundary error)
