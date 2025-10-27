@@ -1,0 +1,134 @@
+//=--DeclRewriter.h-----------------------------------------------*- C++-*-===//
+//
+// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// See https://llvm.org/LICENSE.txt for license information.
+// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+//
+//===----------------------------------------------------------------------===//
+// This file contains the DeclRewriter class which is used to rewrite variable
+// declarations in a program using the checked pointers types solved for by the
+// the conversion tool.
+//===----------------------------------------------------------------------===//
+
+#ifndef LLVM_CLANG_3C_DECLREWRITER_H
+#define LLVM_CLANG_3C_DECLREWRITER_H
+
+#include "clang/3C/ConstraintBuilder.h"
+#include "clang/3C/RewriteUtils.h"
+#include "clang/AST/ASTContext.h"
+#include "clang/AST/Decl.h"
+#include "clang/AST/RecursiveASTVisitor.h"
+#include "clang/AST/Stmt.h"
+#include "clang/Rewrite/Core/Rewriter.h"
+
+using namespace llvm;
+using namespace clang;
+
+class DeclRewriter {
+public:
+  DeclRewriter(Rewriter &R, ASTContext &A, GlobalVariableGroups &GP)
+      : R(R), A(A), GP(GP) {}
+
+  // The publicly accessible interface for performing declaration rewriting.
+  // All declarations for variables with checked types in the variable map of
+  // Info parameter are rewritten.
+  static void rewriteDecls(ASTContext &Context, ProgramInfo &Info, Rewriter &R);
+
+  static void
+  buildItypeDecl(PVConstraint *Defn, DeclaratorDecl *Decl, std::string &Type,
+                 std::string &IType, ProgramInfo &Info,
+                 ArrayBoundsRewriter &ABR);
+
+private:
+  static RecordDecl *LastRecordDecl;
+  static std::map<Decl *, Decl *> VDToRDMap;
+  static std::set<Decl *> InlineVarDecls;
+  Rewriter &R;
+  ASTContext &A;
+  GlobalVariableGroups &GP;
+
+  // This set contains declarations that have already been rewritten as part of
+  // a prior declaration that was in the same multi-declaration. It is checked
+  // before rewriting in order to avoid rewriting a declaration more than once.
+  // It is not used with individual declarations outside of multi-declarations
+  // because these declarations are seen exactly once, rather than every time a
+  // declaration in the containing multi-decl is visited.
+  std::set<Decl *> VisitedMultiDeclMembers;
+
+  // Visit each Decl in ToRewrite and apply the appropriate pointer type
+  // to that Decl. ToRewrite is the set of all declarations to rewrite.
+  void rewrite(RSet &ToRewrite);
+
+  // Rewrite a specific variable declaration using the replacement string in the
+  // DAndReplace structure. Each of these functions is specialized to handling
+  // one subclass of declarations.
+  template <typename DRType>
+  void rewriteFieldOrVarDecl(DRType *N, RSet &ToRewrite);
+  void rewriteMultiDecl(DeclReplacement *N, RSet &ToRewrite,
+                        std::vector<Decl *> SameLineDecls,
+                        bool ContainsInlineStruct);
+  void rewriteSingleDecl(DeclReplacement *N, RSet &ToRewrite);
+  void doDeclRewrite(SourceRange &SR, DeclReplacement *N);
+  void rewriteFunctionDecl(FunctionDeclReplacement *N);
+  void rewriteTypedefDecl(TypedefDeclReplacement *TDT, RSet &ToRewrite);
+  void getDeclsOnSameLine(DeclReplacement *N, std::vector<Decl *> &Decls);
+  bool isSingleDeclaration(DeclReplacement *N);
+  SourceRange getNextCommaOrSemicolon(SourceLocation L);
+  static void detectInlineStruct(Decl *D, SourceManager &SM);
+};
+
+// Visits function declarations and adds entries with their new rewritten
+// declaration to the RSet RewriteThese.
+class FunctionDeclBuilder : public RecursiveASTVisitor<FunctionDeclBuilder> {
+public:
+  explicit FunctionDeclBuilder(ASTContext *C, ProgramInfo &I, RSet &DR,
+                               ArrayBoundsRewriter &ArrRewriter)
+      : Context(C), Info(I), RewriteThese(DR), ABRewriter(ArrRewriter),
+        VisitedSet() {}
+
+  bool VisitFunctionDecl(FunctionDecl *);
+  bool isFunctionVisited(std::string FuncName);
+
+protected:
+  ASTContext *Context;
+  ProgramInfo &Info;
+  RSet &RewriteThese;
+  ArrayBoundsRewriter &ABRewriter;
+
+  // Set containing the names of all functions visited in the AST traversal.
+  // Used to ensure the new signature is only computed once for each function.
+  std::set<std::string> VisitedSet;
+
+  // Get existing itype string from constraint variables.
+  std::string getExistingIType(ConstraintVariable *DeclC);
+
+  virtual void buildDeclVar(const FVComponentVariable *CV,
+                            DeclaratorDecl *Decl, std::string &Type,
+                            std::string &IType, std::string UseName,
+                            bool &RewriteGen, bool &RewriteParm,
+                            bool &RewriteRet, bool StaticFunc);
+  void buildCheckedDecl(PVConstraint *Defn, DeclaratorDecl *Decl,
+                        std::string &Type, std::string &IType,
+                        std::string UseName, bool &RewriteParm,
+                        bool &RewriteRet);
+  void buildItypeDecl(PVConstraint *Defn, DeclaratorDecl *Decl,
+                      std::string &Type, std::string &IType, bool &RewriteParm,
+                      bool &RewriteRet);
+
+  bool hasDeclWithTypedef(const FunctionDecl *FD);
+
+  bool inParamMultiDecl(const ParmVarDecl *PVD);
+};
+
+class FieldFinder : public RecursiveASTVisitor<FieldFinder> {
+public:
+  FieldFinder(GlobalVariableGroups &GVG) : GVG(GVG) {}
+
+  bool VisitFieldDecl(FieldDecl *FD);
+
+  static void gatherSameLineFields(GlobalVariableGroups &GVG, Decl *D);
+
+private:
+  GlobalVariableGroups &GVG;
+};
+#endif // LLVM_CLANG_3C_DECLREWRITER_H
