@@ -356,7 +356,7 @@ def run_tool_on_all(dirs):
 
     for d in dirs:
         cmds = []
-        curr = ""
+        curr = None
         if DEBUG:
             pool = multiprocessing.Pool(1)
         else:
@@ -374,25 +374,37 @@ def run_tool_on_all(dirs):
 
         print(f"[+] running tool on {d}")
         convert_individual_script = os.path.join(d, "convert_individual.sh")
+        prefix="build/bin/detecterr"
 
         # >> existing - we have now parallized this stuff
         # subprocess.check_call(f"{convert_individual_script}", shell=True, cwd=d)
 
         # parallelize the process of running detecterr on individual files
         with open(convert_individual_script, "r") as f:
-            lines = list(line.strip() for line in f.readlines())
-            for (i, line) in enumerate(lines[1:]):  # skip first line (shebang)
-                if line.startswith("cd"):
-                    if i != 0:
-                        cmds.append(curr)
-                    curr = line.rstrip("\\")
-                else:
-                    curr += line.rstrip("\\")
+            lines = f.read().splitlines()
 
-        # the last line..
-        if curr:
+        start = 1 if lines and lines[0].startswith("#!") else 0
+        for raw in lines[start:]:
+            line = raw.strip()
+
+            if not line or line.startswith("#"):
+                continue
+
+            if curr is None:
+                if line.startswith(prefix):
+                    curr = line.rstrip("\\").strip()
+            else:
+                curr += " " + line.rstrip("\\").strip()
+
+            if curr is not None and not raw.rstrip().endswith("\\"):
+                if curr.startswith(prefix):
+                    cmds.append(curr)
+                curr = None
+
+        if curr and curr.startswith(prefix):
             cmds.append(curr)
 
+        print(len(cmds))
         pool.imap(process, cmds)
         pool.close()
         pool.join()

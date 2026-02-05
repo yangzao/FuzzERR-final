@@ -173,7 +173,7 @@ def run3C(
                 continue
 
             # BEAR. Need to add directory.
-            file_to_add = i["directory"] + SLASH + file_to_add
+            #file_to_add = i["directory"] + SLASH + file_to_add
             compiler_path = i["arguments"][0]
             # get the compiler arguments
             (compiler_x_args, output_filename) = getCheckedCArgs(
