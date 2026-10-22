@@ -21,7 +21,7 @@ def test_parse_asan_crash():
     crash_info = parse_asan_crash(log, "")
     assert crash_info is not None
     assert crash_info["crash_filename"] == "lib_tparm.c"
-    assert crash_info["crash_filename_path"] == "/home/shank/code/research/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tinfo/lib_tparm.c"
+    assert crash_info["crash_filename_path"] == "/mnt/bigdata/zao/code/FuzzERR-final/detecterr_input/ncurses-6.3/ncurses-6.3/ncurses/tinfo/lib_tparm.c"
     assert crash_info["crash_line"] == 621
     assert crash_info["crash_func"] == "tparm_setup"
     print(f"passed")
@@ -35,7 +35,7 @@ def test_get_src_line_for_last_get_bit():
     log = "".join(log)
     # print(log)
 
-    src_path = "/home/shank/code/research/tmp/libpng-1.6.35"
+    src_path = "/mnt/bigdata/zao/code/FuzzERR-final/experiments/libpng-1.6.35"
     expected = 2142
     got = _get_src_line_for_last_get_bit(src_path=src_path, logtxt=log)
 
@@ -67,7 +67,7 @@ def test_get_src_line_for_crash3():
     log = "".join(log)
     # print(log)
 
-    src_path = "/home/shank/code/research/FuzzERR/experiments/libpng/imagemagick_src"
+    src_path = "/mnt/bigdata/zao/code/FuzzERR-final/experiments/libpng/imagemagick_src"
     expected = 150
     got = _get_src_line_for_crash(src_path=src_path, logtxt=log)
 

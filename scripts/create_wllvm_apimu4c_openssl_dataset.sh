@@ -6,11 +6,11 @@ set -x
 set -o pipefail
 export PS4='[ $LINENO ]: '
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 LIB_INSTR_DIR_SSL=$(realpath "$BASE_DIR/experiments/APIMU4C/openssl_dataset/libssl")
 LIB_INSTR_DIR_CRYPTO=$(realpath "$BASE_DIR/experiments/APIMU4C/openssl_dataset/libcrypto")
-LIB_SRC_DIR=$(realpath "/workdisk/shank/FuzzERR_stuff/detecterr_input/openssl-1-1-pre8_patched_cmdline/openssl-1-1-pre8_patched_cmdline")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/openssl-1-1-pre8_patched_cmdline/openssl-1-1-pre8_patched_cmdline")
 
 (
     # generate the shared library

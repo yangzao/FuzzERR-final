@@ -19,15 +19,15 @@ function echo_header() {
 	set -x
 }
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 # libncurses related
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libncurses")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/ncurses-6.3/ncurses-6.3")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/ncurses-6.3/ncurses-6.3")
 
 # dependent binaries related
 # 1. htop
-HTOP_SRC_DIR=$(realpath "$BASE_DIR/../fuzzerr_program_sources/htop_src")
+HTOP_SRC_DIR=$(realpath "$BASE_DIR/fuzzerr_program_sources/htop_src")
 HTOP_INSTALL_DIR=$(realpath "$BASE_DIR/experiments/libncurses/htop_install")
 HTOP_BIN="$HTOP_INSTALL_DIR/bin/htop"
 

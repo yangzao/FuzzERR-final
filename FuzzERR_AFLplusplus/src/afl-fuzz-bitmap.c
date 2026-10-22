@@ -478,8 +478,8 @@ void write_crash_readme(afl_state_t *afl) {
 
 /// @shank
 /// TODO: shank: later: this should be read from some environment variable
-static const char *CRASH_FINDER_PATH = "$HOME/code/research/FuzzERR/scripts/fuzzerr/crash_finder.py";
-static const char *CRASH_MINIMIZER_PATH = "$HOME/code/research/FuzzERR/scripts/fuzzerr/crash_minimizer.py";
+static const char *CRASH_FINDER_PATH = "/mnt/bigdata/zao/code/FuzzERR-final/scripts/fuzzerr/crash_finder.py";
+static const char *CRASH_MINIMIZER_PATH = "/mnt/bigdata/zao/code/FuzzERR-final/scripts/fuzzerr/crash_minimizer.py";
 static char *MINIMIZED_ERROR_MASK_FILE = NULL;
 static char *MINIMIZER_STATS_FILE = NULL;
 

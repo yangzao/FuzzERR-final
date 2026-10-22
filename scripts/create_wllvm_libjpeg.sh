@@ -6,10 +6,10 @@ set -x
 set -o pipefail
 export PS4='[ $LINENO ]: '
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/AblationStudy/F_FIP/libjpeg")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/libjpeg-turbo_2.1.2.orig/libjpeg-turbo-2.1.2")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/libjpeg-turbo_2.1.2.orig/libjpeg-turbo-2.1.2")
 
 (
 	# generate the shared library

@@ -16,7 +16,7 @@ from colorlog import ColoredFormatter
 
 
 ERROR_MASK_TO_INVESTIGATE_DIR = (
-    "/home/shank/code/research/FuzzERR/TODO/crash_minimizer_investigate/"
+    "/mnt/bigdata/zao/code/FuzzERR-final/TODO/crash_minimizer_investigate/"
 )
 
 SEPARATOR = "=" * 80

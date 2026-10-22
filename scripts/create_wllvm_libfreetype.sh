@@ -6,10 +6,10 @@ set -x
 set -o pipefail
 export PS4='[ $LINENO ]: '
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libfreetype")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/freetype_2.11.1+dfsg.orig/freetype-2.11.1")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/freetype_2.11.1+dfsg.orig/freetype-2.11.1")
 
 (
     # generate the shared library

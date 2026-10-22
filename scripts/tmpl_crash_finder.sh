@@ -10,12 +10,12 @@ export FUZZERR_LIB_SRC_PATH=#todo
 export ASAN_OPTIONS="detect_leaks=0:abort_on_error=1:symbolize=1:handle_abort=1"
 
 # local vars
-BIN_CRASH_FINDER=$HOME/code/research/FuzzERR/scripts/fuzzerr/crash_finder.py
+BIN_CRASH_FINDER=/mnt/bigdata/zao/code/FuzzERR-final/scripts/fuzzerr/crash_finder.py
 BIN_UNDER_TEST=#todo
 ARGS={{args}}
 
 (
-    cd $HOME/code/research/FuzzERR
+    cd /mnt/bigdata/zao/code/FuzzERR-final/
     
     # TODO: create any directories required in afl tmpfs
    

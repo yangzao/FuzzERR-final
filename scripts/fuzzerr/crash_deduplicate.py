@@ -33,7 +33,7 @@ BIN_PATH = None
 LONG_RUNNING = False
 
 
-CRASH_MINIMIZER_PATH = "$HOME/code/research/FuzzERR/scripts/fuzzerr/crash_minimizer.py"
+CRASH_MINIMIZER_PATH = "/mnt/bigdata/zao/code/FuzzERR-final/scripts/fuzzerr/crash_minimizer.py"
 
 minimizer_stat_regex = re.compile(
     r"Original count: \d+, Final count: \d+, Executions required: \d+"

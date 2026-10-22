@@ -6,17 +6,17 @@ set -x
 set -o pipefail
 export PS4='[ $LINENO ]: '
 
-export BIN_AFL_CLANG_FAST=$HOME/code/research/FuzzERR_AFLplusplus/afl-clang-fast
-export BIN_AFL_CLANG_FASTPP=$HOME/code/research/FuzzERR_AFLplusplus/afl-clang-fast++
+export BIN_AFL_CLANG_FAST=/mnt/bigdata/zao/code/FuzzERR-final/FuzzERR_AFLplusplus/afl-clang-fast
+export BIN_AFL_CLANG_FASTPP=/mnt/bigdata/zao/code/FuzzERR-final/FuzzERR_AFLplusplus/afl-clang-fast++
 
 # import utility functions
 . $(dirname "$0")/utils.sh
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 # libelf related
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libelf")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/elfutils_0.187.orig/elfutils-0.187")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/elfutils_0.187.orig/elfutils-0.187")
 
 # ======================================
 # create instrumented libelf.so
@@ -44,7 +44,7 @@ echo_header "create symlink libelf.so.1"
 # # build dependent binaries that would use this instrumetned libelf
 # # ======================================
 # # 1. elfutils (readelf, objdump, addr2line, nm etc)
-# ELFUTILS_SRC_DIR=$(realpath "$BASE_DIR/../fuzzerr_program_sources/elfutils_src")
+# ELFUTILS_SRC_DIR=$(realpath "$BASE_DIR/fuzzerr_program_sources/elfutils_src")
 # ELFUTILS_INSTALL_DIR=$(realpath "$LIB_INSTR_DIR"/elfutils_install)
 # ELFUTILS_NM_BIN="$ELFUTILS_INSTALL_DIR"/bin/eu-nm
 # ELFUTILS_STRINGS_BIN="$ELFUTILS_INSTALL_DIR"/bin/eu-strings

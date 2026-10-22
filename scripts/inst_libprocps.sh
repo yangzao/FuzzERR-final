@@ -9,14 +9,14 @@ export PS4='[ $LINENO ]: '
 # import utility functions
 . $(dirname "$0")/utils.sh
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 # lib related
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libprocps")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/procps-v4.0.1rc1/procps-v4.0.1rc1")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/procps-v4.0.1rc1/procps-v4.0.1rc1")
 
 # 1. procps (ps, kill, w, etc.)
-PROCPS_SRC_DIR=$(realpath "$BASE_DIR/../fuzzerr_program_sources/procps_src")
+PROCPS_SRC_DIR=$(realpath "$BASE_DIR/fuzzerr_program_sources/procps_src")
 PROCPS_INSTALL_DIR=$(realpath $LIB_INSTR_DIR/procps_install)
 PROCPS_W_BIN=$PROCPS_INSTALL_DIR/bin/w
 PROCPS_FREE_BIN=$PROCPS_INSTALL_DIR/bin/free

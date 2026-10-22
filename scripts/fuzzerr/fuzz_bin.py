@@ -55,7 +55,7 @@ class FuzzResult(Enum):
 
 BASE_CONFIG = {
     "DEBUG": 0,
-    "AFL_FUZZ_BIN": "/home/shank/code/research/FuzzERR_AFLplusplus/afl-fuzz",
+    "AFL_FUZZ_BIN": "/mnt/bigdata/zao/code/FuzzERR-final/FuzzERR_AFLplusplus/afl-fuzz",
     # "AFL_TIMEOUT_MSECS": 10000,  # 10 seconds
     "BIN_ARGS": "",
     "TOTAL_FUZZ_TIME_MINS": 6 * 60,  # 6 hours
@@ -165,7 +165,7 @@ def create_fuzz_cmd(
     # # custom python mutator
     # cmd_lst.extend(
     #     [
-    #         f"PYTHONPATH={os.getenv('HOME')}/code/research/FuzzERR/scripts",
+    #         f"PYTHONPATH=/mnt/bigdata/zao/code/FuzzERR-final/scripts",
     #         "AFL_PYTHON_MODULE=fuzzerr_custom_mutator",
     #         "AFL_CUSTOM_MUTATOR_ONLY=1",
     #     ]
@@ -174,7 +174,7 @@ def create_fuzz_cmd(
     if "RANDOM_FAULT_INJECTION" in config and config["RANDOM_FAULT_INJECTION"] == 1:
         cmd_lst.extend(
             [
-                f"PYTHONPATH={os.getenv('HOME')}/code/research/FuzzERR/scripts",
+                f"PYTHONPATH=/mnt/bigdata/zao/code/FuzzERR-final/scripts",
                 "AFL_PYTHON_MODULE=fuzzerr_mutator_random",
                 "AFL_CUSTOM_MUTATOR_ONLY=1",
             ]

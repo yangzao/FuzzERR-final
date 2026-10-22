@@ -6,16 +6,16 @@ set -x
 set -o pipefail
 # export PS4='[ $LINENO ]: '
 
-export BIN_AFL_CLANG_FAST=$HOME/code/research/FuzzERR_AFLplusplus/afl-clang-fast
-export BIN_AFL_CLANG_FASTPP=$HOME/code/research/FuzzERR_AFLplusplus/afl-clang-fast++
+export BIN_AFL_CLANG_FAST=/mnt/bigdata/zao/code/FuzzERR-final/FuzzERR_AFLplusplus/afl-clang-fast
+export BIN_AFL_CLANG_FASTPP=/mnt/bigdata/zao/code/FuzzERR-final/FuzzERR_AFLplusplus/afl-clang-fast++
 
 # import utility functions
 . $(dirname "$0")/utils.sh
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libjpeg")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/libjpeg-turbo_2.1.2.orig/libjpeg-turbo-2.1.2")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/libjpeg-turbo_2.1.2.orig/libjpeg-turbo-2.1.2")
 
 # ======================================
 # create instrumented libjpeg.so

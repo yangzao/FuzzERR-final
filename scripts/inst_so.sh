@@ -13,7 +13,7 @@ function errexit(){
 }
 
 
-BASE_DIR="/home/shank/code/research/FuzzERR"
+BASE_DIR="/mnt/bigdata/zao/code/FuzzERR-final/"
 SO_FILENAME="$(basename /"$1/")"
 
 

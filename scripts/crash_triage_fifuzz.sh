@@ -5,7 +5,7 @@
 # set -x
 # export PS4='[ $LINENO ]: '
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 # requires 1 argument (the path to the directory for the program)
 # ensure 1 argument is provided

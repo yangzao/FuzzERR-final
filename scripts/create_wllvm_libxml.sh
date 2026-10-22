@@ -6,10 +6,10 @@ set -x
 set -o pipefail
 export PS4='[ $LINENO ]: '
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/AblationStudy/F_FIP/libxml2")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/libxml2_2.9.13+dfsg.orig/libxml2-2.9.13")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/libxml2_2.9.13+dfsg.orig/libxml2-2.9.13")
 
 (
     # generate the shared library

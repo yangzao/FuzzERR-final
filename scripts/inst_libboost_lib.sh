@@ -19,7 +19,7 @@ lib=$1
 libboost_lib_name="libboost_$lib.so"
 echo_header "working on $libboost_lib_name"
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 # generate errblocks.json and also the wllvm so
 echo_header "create errblocks.json and also the wllvm so"
@@ -30,7 +30,7 @@ echo_header "create errblocks.json and also the wllvm so"
 
 # libboost related
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libboost")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/boost_1_80_0/boost_1_80_0")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/boost_1_80_0/boost_1_80_0")
 
 linker_flags=
 case $lib in

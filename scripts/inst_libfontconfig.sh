@@ -9,11 +9,11 @@ export PS4='[ $LINENO ]: '
 # import utility functions
 . $(dirname "$0")/utils.sh
 
-BASE_DIR=$HOME/code/research/FuzzERR
+BASE_DIR=/mnt/bigdata/zao/code/FuzzERR-final/
 
 # libcairo related
 LIB_INSTR_DIR=$(realpath "$BASE_DIR/experiments/libfontconfig")
-LIB_SRC_DIR=$(realpath "$BASE_DIR/../detecterr_input/fontconfig-2.14.1/fontconfig-2.14.1")
+LIB_SRC_DIR=$(realpath "$BASE_DIR/detecterr_input/fontconfig-2.14.1/fontconfig-2.14.1")
 
 # ======================================
 # create instrumented libfontconfig.so
